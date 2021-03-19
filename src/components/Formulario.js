@@ -28,6 +28,11 @@ const Formulario = ({crearCita}) => {
         e.preventDefault();
 
         // Validar
+        if ((!medicamento || !cant || !price) || (cant <= 0 || price <=0)) {
+            actualizarError(true);
+            return;
+        }
+
         if(medicamento.trim() === '' || cant.trim() === ''  || price.trim() === '' ){
             actualizarError(true);
             return;
@@ -45,7 +50,7 @@ const Formulario = ({crearCita}) => {
         actualizarCita({
             medicamento: '',
             cant: '',
-            precio: 0
+            price: ''
         })
     }
 
@@ -83,6 +88,7 @@ const Formulario = ({crearCita}) => {
                     type="number"
                     name="price"
                     className="u-full-width"
+                    placeholder="Precio Unitario"
                     onChange={actualizarState}
                     value={price}
                 />

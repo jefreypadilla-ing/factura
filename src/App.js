@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
-import Cita from './components/Cita';
-import Printer from "./components/Printer";
+import Facturacion from './components/Facturacion';
+import {db} from "./firebase";
 
 function App() {
 
@@ -36,9 +36,11 @@ function App() {
      guardarCitas(nuevasCitas);
   }
 
-  const clearFactura = () => {
+  const nuevaFactura = (lastFactura) => {
       guardarCitas([])
       localStorage.setItem('medicamentos', JSON.stringify([]));
+      lastFactura += 1
+      db.collection('factura').doc().set({ number: lastFactura, createAt: new Date() })
   }
 
   // Mensaje condicional
@@ -56,31 +58,11 @@ function App() {
               />
           </div>
           <div className="one-half column">
-              <h2>{titulo}</h2>
-
-              <table className="cita u-full-width">
-                  <thead>
-                  <tr>
-                      <th>Medicamento</th>
-                      <th>Precio Unitario</th>
-                      <th>Cantidad</th>
-                      <th>Total</th>
-                      <th>x</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {citas.map(cita => (
-                      <Cita
-                          key={cita.id}
-                          cita={cita}
-                          eliminarCita={eliminarCita}
-                      />
-                  ))}
-                  </tbody>
-              </table>
-              <Printer
+              <Facturacion
+                  titulo={titulo}
                   citas={citas}
-                  clear={clearFactura}
+                  eliminarCita={eliminarCita}
+                  nuevaFactura={nuevaFactura}
               />
           </div>
         </div>
