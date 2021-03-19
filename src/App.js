@@ -39,7 +39,6 @@ function App() {
   const nuevaFactura = (lastFactura) => {
       guardarCitas([])
       localStorage.setItem('medicamentos', JSON.stringify([]));
-      lastFactura += 1
       db.collection('factura').doc().set({ number: lastFactura, createAt: new Date() })
   }
 

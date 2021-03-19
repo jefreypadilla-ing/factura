@@ -87,15 +87,7 @@ class Facturacion extends React.Component {
     render() {
         const {titulo,citas, eliminarCita, nuevaFactura } = this.props;
 
-        let lastFactura = 0
-        if(Number.isInteger(this.state.lastFactura)) {
-            lastFactura = this.state.lastFactura + 1;
-        }
-
-        const updateFactura = async () => {
-            const updateLastFactura = parseInt(lastFactura) + 1
-            await db.collection('factura').doc().set({number: updateLastFactura, createAt: new Date()})
-        }
+        const lastFactura = this.state.lastFactura + 1;
 
         return (
             <Fragment>
@@ -125,14 +117,14 @@ class Facturacion extends React.Component {
                 { citas.length > 0 ?
                     <div>
                         <ReactToPrint
-                            trigger={() => <button type="button" onClick={updateFactura} className="u-full-width button-primary">Imprimir Factura</button>}
+                            trigger={() => <button type="button" className="u-full-width button-primary">Imprimir Factura</button>}
                             content={() => this.componentRef}
                         />
                         <FacturaToPrint citas={citas} lastFactura={lastFactura} ref={(el) => (this.componentRef = el)} />
                         <button
                             type="button"
                             className="u-full-width button-primary"
-                            onClick={nuevaFactura}>
+                            onClick={ () => nuevaFactura(lastFactura) }>
                             Nueva Factura
                         </button>
                     </div>
