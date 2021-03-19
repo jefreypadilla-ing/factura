@@ -5,13 +5,24 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+  background-image: linear-gradient(-225deg, #08226c 0%, #1e3c90 52%, #4A67BA 100%);
   min-height: 100%;
   padding-bottom: 5rem;
 }
 h1, h2  {
   color: white;
   padding: 3rem 0;
+  text-align: center;
+
+  text-transform: uppercase;
+
+  font-family: 'Staatliches', cursive;
+  letter-spacing: 1px;
+}
+
+h3 {
+  color: white;
+  padding: -2rem 0;
   text-align: center;
 
   text-transform: uppercase;
@@ -82,6 +93,13 @@ input[type="time"] {
   margin-top: 2rem;
 }
 
+.button.new,
+.button.new:hover {
+  background-color: #28a745;
+  color: white;
+  margin-top: 2rem;
+}
+
 .alerta-error {
   background-color: white;
   color: red;
@@ -90,4 +108,8 @@ input[type="time"] {
   text-transform: uppercase;
   text-align: center;
   font-family:  'Staatliches', cursive;
-} 
+}
+
+.logo {
+  width: 30%;
+}

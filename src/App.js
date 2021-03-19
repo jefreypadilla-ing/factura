@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
 import Facturacion from './components/Facturacion';
 import {db} from "./firebase";
+import logo from './LogoBlueFarmaPNG.png';
 
 function App() {
 
@@ -47,7 +48,9 @@ function App() {
 
   return (
     <Fragment>
-      <h1>Administrador de Facturación</h1>
+      <h3><img className="logo" src={logo} alt="BlueFarmaMJ" />
+          <small>POS</small>
+      </h3>
 
       <div className="container">
         <div className="row">

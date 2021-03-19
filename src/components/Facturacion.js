@@ -120,16 +120,17 @@ class Facturacion extends React.Component {
                             trigger={() => <button type="button" className="u-full-width button-primary">Imprimir Factura</button>}
                             content={() => this.componentRef}
                         />
-                        <FacturaToPrint citas={citas} lastFactura={lastFactura} ref={(el) => (this.componentRef = el)} />
                         <button
                             type="button"
-                            className="u-full-width button-primary"
+                            className="button new u-full-width"
                             onClick={ () => nuevaFactura(lastFactura) }>
                             Nueva Factura
                         </button>
+                        <div className="hidden-div">
+                            <FacturaToPrint citas={citas} lastFactura={lastFactura} ref={(el) => (this.componentRef = el)} />
+                        </div>
                     </div>
                     : null }
-
             </Fragment>
         );
     }
