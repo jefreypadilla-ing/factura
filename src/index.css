@@ -113,3 +113,7 @@ input[type="time"] {
 .logo {
   width: 30%;
 }
+
+.logo_factura {
+  width: 80%;
+}
