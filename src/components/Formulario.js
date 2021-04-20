@@ -8,7 +8,8 @@ const Formulario = ({crearCita}) => {
     const [cita, actualizarCita] = useState({
         medicamento: '',
         cant: '',
-        price: ''
+        price: '',
+        descuento: ''
     });
     const [ error, actualizarError ] = useState(false)
 
@@ -21,7 +22,7 @@ const Formulario = ({crearCita}) => {
     }
 
     // Extraer los valores
-    const { medicamento, cant, price } = cita;
+    const { medicamento, cant, price, descuento } = cita;
 
     // Cuando el usuario presiona agregar cita
     const submitCita = e => {
@@ -33,10 +34,13 @@ const Formulario = ({crearCita}) => {
             return;
         }
 
-        if(medicamento.trim() === '' || cant.trim() === ''  || price.trim() === '' ){
+        if(medicamento.trim() === '' || cant.trim() === ''  || price.trim() === ''){
             actualizarError(true);
             return;
         }
+
+        if (!descuento || descuento.trim() === '') cita.descuento = 0;
+
         // Eliminar el mensaje previo
         actualizarError(false);
 
@@ -50,7 +54,8 @@ const Formulario = ({crearCita}) => {
         actualizarCita({
             medicamento: '',
             cant: '',
-            price: ''
+            price: '',
+            descuento: ''
         })
     }
 
@@ -91,6 +96,18 @@ const Formulario = ({crearCita}) => {
                     placeholder="Precio Unitario"
                     onChange={actualizarState}
                     value={price}
+                />
+
+                <label>Porcentaje de Descuento</label>
+                <input
+                    type="number"
+                    name="descuento"
+                    min="0"
+                    max="99"
+                    className="u-full-width"
+                    placeholder="Porcentaje de Descuento %"
+                    onChange={actualizarState}
+                    value={descuento}
                 />
 
                 <button

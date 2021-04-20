@@ -9,19 +9,28 @@
 
 .table {
     border-top: 1px solid black;
-
 }
 
 .table {
-    border-bottom: 1px solid black;
     border-collapse: collapse;
+}
+
+td, th {
+    padding: 4px 6px;
+    border-bottom: 0px;
+}
+
+th.description,
+th.price,
+th.quantity{
+    border-bottom: 1px solid #e1e1e1;
 }
 
 td.description,
 th.description {
     width: 200px;
     max-width: 200px;
-    font-size: 12px;
+    font-size: 8px;
     font-family: 'Times New Roman';
 }
 
@@ -29,7 +38,7 @@ td.quantity,
 th.quantity {
     width: 80px;
     max-width: 80px;
-    font-size: 12px;
+    font-size: 8px;
     font-family: 'Times New Roman';
 }
 
@@ -38,7 +47,16 @@ th.price {
     width: 200px;
     max-width: 200px;
     word-break: break-all;
-    font-size: 12px;
+    font-size: 8px;
+    font-family: 'Times New Roman';
+}
+
+td.more,
+th.more {
+    width: 200px;
+    max-width: 200px;
+    word-break: break-all;
+    font-size: 10px;
     font-family: 'Times New Roman';
 }
 
